@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css"
 
 
-
 export default function App() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
@@ -22,7 +21,8 @@ export default function App() {
                 console.log("🔄 Загружена история сообщений:", data.data);
                 setMessages(data.data);
             } else if (data.type === "message") {
-                setMessages((prev) => [...prev, data.data]);
+                console.log(data.data)
+                setMessages((prev) => [...prev, data]);
             }
         };
 
@@ -54,7 +54,7 @@ export default function App() {
                         key={index} 
                         className="p-2 bg-blue-500 text-white rounded-lg mb-2 break-words w-full"
                     >
-                        {msg}
+                        {msg.data}
                     </div>
 
                 ))}
